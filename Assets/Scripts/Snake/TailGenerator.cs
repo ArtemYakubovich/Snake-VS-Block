@@ -15,7 +15,6 @@ public class TailGenerator : MonoBehaviour
             tail.Add(Instantiate(_segmentTemplate, transform));
         }
 
-
         return tail;
     }
 }
