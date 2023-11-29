@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -13,5 +15,13 @@ public class SnakeHead : MonoBehaviour
     public void Move(Vector3 newPosition)
     {
         _rigidbody2D.MovePosition(newPosition);
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.TryGetComponent(out Block block))
+        {
+            block.Fill();
+        }
     }
 }
