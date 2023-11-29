@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
@@ -19,22 +19,30 @@ public class Spawner : MonoBehaviour
 
         for (int i = 0; i < _repeatCount; i++)
         {
-            GenerateFullLine(_blockSpawnPoints, _blockTemplate.gameObject);
             MoveSpawner(_distanceBetweenFullLine);
+            GenerateFullLine(_blockSpawnPoints, _blockTemplate.gameObject);
+            MoveSpawner(_distanceBetweenRandomLine);
+            GenerateRandomElements(_blockSpawnPoints, _blockTemplate.gameObject, _blockSpawnChance);
         }
     }
 
-    private void GenerateFullLine(SpawnPoint[] spawnPoints,GameObject generateElement)
+    private void GenerateFullLine(SpawnPoint[] spawnPoints,GameObject generatedElement)
     {
         for (int i = 0; i < spawnPoints.Length; i++)
         {
-            GenerateElement(spawnPoints[i].transform.position, generateElement);
+            GenerateElement(spawnPoints[i].transform.position, generatedElement);
         }
     }
 
-    private void GenerateRandomElements()
+    private void GenerateRandomElements(SpawnPoint[] spawnPoints, GameObject generatedElement, int spawnChance)
     {
-        
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            if (Random.Range(0, 100) < _blockSpawnChance)
+            {
+                GameObject element = GenerateElement(spawnPoints[i].transform.position, generatedElement);
+            }
+        }
     }
 
     private GameObject GenerateElement(Vector3 spawnPoint, GameObject generatedElement)
