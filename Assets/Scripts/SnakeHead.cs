@@ -1,18 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class SnakeHead : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Rigidbody2D _rigidbody2D;
+
+    private void Start()
     {
-        
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Move(Vector3 newPosition)
     {
-        
+        _rigidbody2D.MovePosition(newPosition);
     }
 }
