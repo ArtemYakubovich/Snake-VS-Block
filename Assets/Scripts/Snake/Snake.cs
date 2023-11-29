@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Events;
@@ -24,6 +25,16 @@ public class Snake : MonoBehaviour
         SizeUpdated?.Invoke(_tail.Count);
     }
 
+    private void OnEnable()
+    {
+        _snakeHead.BlockCollided += OnBlockCollided;
+    }
+
+    private void OnDisable()
+    {
+        _snakeHead.BlockCollided -= OnBlockCollided;
+    }
+
     private void FixedUpdate()
     {
         Move(_snakeHead.transform.position + _snakeHead.transform.up * _speed * Time.fixedDeltaTime);
@@ -44,5 +55,14 @@ public class Snake : MonoBehaviour
         }
         
         _snakeHead.Move(nextPosition);
+    }
+
+    private void OnBlockCollided()
+    {
+        Segment deletedSegment = _tail[^1];
+        _tail.Remove(deletedSegment);
+        Destroy(deletedSegment.gameObject);
+        
+        SizeUpdated?.Invoke(_tail.Count);
     }
 }
