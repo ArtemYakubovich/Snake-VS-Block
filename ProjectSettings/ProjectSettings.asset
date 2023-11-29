@@ -777,8 +777,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Snake VS Block
-  metroPackageVersion: 
+  metroPackageName: SnakeVSBlock
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -786,7 +786,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Snake VS Block
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Snake VS Block
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
