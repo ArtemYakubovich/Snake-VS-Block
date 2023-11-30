@@ -16,6 +16,11 @@ public class Snake : MonoBehaviour
     private TailGenerator _tailGenerator;
 
     public event UnityAction<int> SizeUpdated;
+
+    public int GetSize()
+    {
+        return _tailSize;
+    }
     
     private void Awake()
     {
